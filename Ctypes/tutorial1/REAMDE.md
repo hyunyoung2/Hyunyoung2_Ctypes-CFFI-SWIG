@@ -135,9 +135,9 @@ Also you can specify the types of any argument passed into the C function by set
 free_func = libc.free_C_string
 free_func.argtypes = [ctypes.POINTER(ctypes.c_char),]
 ```
-This content and tutorial is [Dan Basder's tutorial1](https://dbader.org/blog/python-ctypes-tutorial)
+This content and tutorial is [Dan Bader's tutorial1](https://dbader.org/blog/python-ctypes-tutorial)
 
-also the code is from [git repository in dan Basder](https://github.com/jima80525/ctypes_example/tree/master/tutorial1)
+also the code is from [git repository in dan Bader](https://github.com/jima80525/ctypes_example/tree/master/tutorial1)
 
 # Referenc
 
