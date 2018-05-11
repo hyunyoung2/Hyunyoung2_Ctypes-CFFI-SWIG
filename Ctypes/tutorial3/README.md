@@ -82,6 +82,10 @@ So the result is :
 # hyunyoung2 @ hyunyoung2-desktop in ~/konltk/Hyunyoung2_Ctypes-CFFI-SWIG/Ctypes/tutorial3 on git:master x [21:49:04] 
 $ python3 example_py3.py
 Hi C, I am from Python!
+
+# hyunyoung2 @ hyunyoung2-desktop in ~/konltk/Hyunyoung2_Ctypes-CFFI-SWIG/Ctypes/tutorial3 on git:master x [21:49:11] 
+$ python example_py3.py 
+Hi C, I am from Python!
 ```
 
 this article is from [here](http://karuppuswamy.com/wordpress/2012/01/28/how-to-use-c-library-in-python-generating-python-wrappers-for-c-library/) for my practice of how to use ctypes.
