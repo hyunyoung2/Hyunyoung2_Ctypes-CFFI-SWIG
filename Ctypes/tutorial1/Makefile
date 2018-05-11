@@ -12,4 +12,6 @@ clib1.o: clib1.c
 test: clib1.so
 	python ./callclib1.py
 
-
+doc:
+	markdown ctypes.md > ctypes.html
+	firefox ctypes.html
