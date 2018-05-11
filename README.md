@@ -16,3 +16,5 @@ This is for practice about how to connect python with library written in C sor e
  5. [how to use C library in python](http://karuppuswamy.com/wordpress/2012/01/28/how-to-use-c-library-in-python-generating-python-wrappers-for-c-library/)
 
  6. [How to wrap c function for python](http://intermediate-and-advanced-software-carpentry.readthedocs.io/en/latest/c++-wrapping.html)
+
+ 7. [Cython versus SWIG](https://stackoverflow.com/questions/456884/extending-python-to-swig-not-to-swig-or-cython)
