@@ -49,8 +49,6 @@ mylib = ctypes.CDLL("./libflags.so")
 mylib.welcome_msg("Hi C, I am from Python!")
 ```
 
-this article is from [here](http://karuppuswamy.com/wordpress/2012/01/28/how-to-use-c-library-in-python-generating-python-wrappers-for-c-library/) for my practice of how to use ctypes.
-
 In this case, that is differet result between python2 and python3.
 
 ```shell
@@ -62,6 +60,31 @@ H
 $ python example.py 
 Hi C, I am from Python!
 ```
+
+So if you have to change some in python file like the following :
+
+```python
+import ctypes
+
+mylib = ctypes.CDLL("./libflags.so")
+
+original_string = "Hi C, I am from Python!"
+
+mutable_string = ctypes.create_string_buffer(str.encode(original_string))
+
+mylib.welcome_msg(mutable_string)
+~                                          
+```
+
+So the result is : 
+
+```shell
+# hyunyoung2 @ hyunyoung2-desktop in ~/konltk/Hyunyoung2_Ctypes-CFFI-SWIG/Ctypes/tutorial3 on git:master x [21:49:04] 
+$ python3 example_py3.py
+Hi C, I am from Python!
+```
+
+this article is from [here](http://karuppuswamy.com/wordpress/2012/01/28/how-to-use-c-library-in-python-generating-python-wrappers-for-c-library/) for my practice of how to use ctypes.
 
 
 # Reference
