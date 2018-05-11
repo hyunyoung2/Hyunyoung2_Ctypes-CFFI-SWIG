@@ -1,5 +1,5 @@
 /*flags.c : Source file*/
-# include <stido.h>
+# include <stdio.h>
 # include "flags.h"
 
 int gFlag = 0;
