@@ -77,6 +77,7 @@ the following files is created.
 Let's execute it on python interpreter.
 
 ```python
+# In example.py
 # from flags_wrap.py 
 import flags_wrap
 print(flags_wrap.welcome_msg("Hi C, I am from Python"))
@@ -88,6 +89,7 @@ print(flags_wrap.get_flag())
 OR You can improt so file.
 
 ```python
+# In example2.py
 # from _flags_wrap.so
 import _flags_wrap
 print(_flags_wrap.welcome_msg("Hi C, I am from Python"))
