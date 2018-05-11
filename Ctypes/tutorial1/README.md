@@ -121,6 +121,7 @@ print("Before:", mutable_string.value)
 libc.add_one_to_string(mutable_string) # Works!
 print("After:", mutable_string.value)
 ```
+
 The result is like this:
 
 ```shell
@@ -156,3 +157,5 @@ also the code is from [git repository in dan Bader](https://github.com/jima80525
  - [Dan Bader's tutorial](https://dbader.org/blog/python-ctypes-tutorial)
  
  - [The tutorial Github repository](https://github.com/jima80525/ctypes_example)
+
+ - [the official document of ctypes](https://docs.python.org/3/library/ctypes.html)
