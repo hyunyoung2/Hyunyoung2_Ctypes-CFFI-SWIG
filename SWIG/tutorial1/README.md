@@ -68,15 +68,40 @@ $ gcc -c <module-name>.c <module-name>_wrap.c -I<path-to-wrap-language-headers>
 $ ld -shared <module-name>.o <module-name>_wrap.o -o _<module-name>.so
 ```
 
+After running "make all", 
+
+the following files is created. 
+
+> flags.o flags_wrap.pyc flags_wrap.py _flags_wrap.so pyflags_wrap.c pyflags_wrap.o
+
 Let's execute it on python interpreter.
 
 ```python
+# from flags_wrap.py 
 import flags_wrap
-print(flags_wrap.welcome_msg("Hi C, I am from Python")
+print(flags_wrap.welcome_msg("Hi C, I am from Python"))
 
-flag_wrap.set_flag(1)
-print(flag_wrap.get_flag())
+flags_wrap.set_flag(1)
+print(flags_wrap.get_flag())
 ```
+
+OR You can improt so file.
+
+```python
+# from _flags_wrap.so
+import _flags_wrap
+print(_flags_wrap.welcome_msg("Hi C, I am from Python"))
+
+_flags_wrap.set_flag(1)
+print(_flags_wrap.get_flag())
+```
+
+
+In here, I used pytho3, so if implement the python codes above with python2.7, it doesn't work. 
+
+
+
+
 
 # Reference 
 
