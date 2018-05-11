@@ -72,7 +72,7 @@ After running "make all",
 
 the following files is created. 
 
-> flags.o flags_wrap.pyc flags_wrap.py _flags_wrap.so pyflags_wrap.c pyflags_wrap.o
+> flags.o flags_wrap.py _flags_wrap.so pyflags_wrap.c pyflags_wrap.o
 
 Let's execute it on python interpreter.
 
@@ -95,13 +95,23 @@ print(_flags_wrap.welcome_msg("Hi C, I am from Python"))
 _flags_wrap.set_flag(1)
 print(_flags_wrap.get_flag())
 ```
-
-
 In here, I used pytho3, so if implement the python codes above with python2.7, it doesn't work. 
 
+Let's see the result of running the above python files.
 
+```shell
+# hyunyoung2 @ hyunyoung2-desktop in ~/konltk/Hyunyoung2_Ctypes-CFFI-SWIG/SWIG/tutorial1 on git:master x [22:42:06] 
+$ python3 example2.py  # this _flag_wrap.so
+Hi C, I am from Python
+None
+1
 
-
+# hyunyoung2 @ hyunyoung2-desktop in ~/konltk/Hyunyoung2_Ctypes-CFFI-SWIG/SWIG/tutorial1 on git:master x [22:43:22] 
+$ python3 example.py  # this flag_wrap.py
+Hi C, I am from Python
+None
+1
+```
 
 # Reference 
 
