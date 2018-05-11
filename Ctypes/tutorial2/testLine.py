@@ -75,4 +75,4 @@ if __name__ == '__main__':
     print("Line in python is", l)
     l.move_line()
     print("Line in python is", l)
-print()
+    print()
