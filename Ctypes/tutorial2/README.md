@@ -1,6 +1,10 @@
 # Ctypes tutorial 2
 
-There is a pair of (x, y) coodirnates and function surrounding it, and this has a line. 
+# How to wrapping function and structure written in c on python with ctypes 
+
+First, Let's design the code to practice ctypes.
+
+There is a pair of (x, y) coodirnates and a line variable has a start point and end point with functions surrounding them.
 
 Let's see the code like this:
 
@@ -45,7 +49,7 @@ Point get_point(void) {
 
 in the code above, focus on the call-by-value and call-by-reference.
 
-Let's see another structure of c language like line :
+Let's see another structure which is a line variable of c language like line :
 
 ```c 
 /* Line.h */
@@ -106,6 +110,12 @@ class Point(ctypes.Structure):
 '(1,2)'
 ```
 
+## Pass-by-value and Pass-by-reference, 
+
+In this part, It is important to understand what is the mutable and immutable in python's variable. 
+
+So don't confuse that c is basically call-by-value and python is basically call-by-reference.
+
 Let's see how to call two ways, pass by value and pass by reference
 
 ```python
@@ -145,6 +155,9 @@ Point in C is (6, 7)
 Point in Python is (6, 7)
 ```
 
+be careful of **ctypes.POINTER(your_variable)**, that is because in cross-languae interfaces, memory access and memory management are very important aspects  to keep in mind.
+
+
 ##  Let's wrap C function like an OOP Wrapper
 
 Let's see an example code like this:
@@ -179,6 +192,8 @@ class Point(ctypes.Structure):
 ## Let's consider the nested C structure from python
 
 ```python
+# testPoint 
+import testPoint # define the Point class
 class Line(ctypes.Structure):
    _fields_ = [('start', testPoint.Point), ('end', testPoint.Point)]
    
@@ -187,17 +202,20 @@ class Line(ctypes.Structure):
        line = get_line()
        self.start = line.start
        self.end = line.end
-       self.show_line_func = wrap_function(lib, 'show_line', None, [Line]
+       self.show_line_func = wrap_function(lib, 'show_line', None, [Line])
+       self.move_line_func = wrap_function(lib, 'move_line_by_ref', None, [ctypes.POINTER(Line)]
+       
+   def __repr__(self):
+       return '{0}->{1}'.format(self.start, self.end)
+   
+   def show_line(self):
+       self.show_line_func(self)
+       
+   def move_line(self):
+       self.move_line_func(self)
 ```
 
-
-
-
-
-
-
-
-
+In this clasee, the most interesting one is how to initialize the \_fields\_ attribute.
 
 This article is retyped for my study about ctype, all is from [Dan Bader's tutorial2 of ctypes](https://dbader.org/blog/python-ctypes-tutorial-part-2)
 
@@ -207,3 +225,7 @@ Also the code is retyped from [git repository of Dan Bader's tutorial2 of ctypes
 # Reference 
 
  - [Dan Bader's Ctypes tutorial2](https://dbader.org/blog/python-ctypes-tutorial-part-2)
+
+ - [ctypesgen is autogenerating python opensource](https://github.com/davidjamesca/ctypesgen)
+ 
+ - [the trick of wrap_function of ctypes](https://www.cs.unc.edu/~gb/blog/2007/02/11/ctypes-tricks/)
