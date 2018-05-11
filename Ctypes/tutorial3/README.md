@@ -10,7 +10,7 @@ Let's see the code :
 
 ```c
 /*flags.c : Source file*/
-# include <stido.h>
+# include <stdio.h>
 # include "flags.h"
 
 int gFlag = 0;
@@ -30,7 +30,7 @@ void set_flag(int flag){
 }
 
 /*flags.h : Header file*/
-void welcom_msg(char *msg);
+void welcome_msg(char *msg);
 int get_flag();
 void set_flag(int flag);
 ```
@@ -45,11 +45,15 @@ then Let's use the library called shared object, libflags.so. with ctypes
 ```python
 import ctypes
 
-mylib = CDLL("./libflags.so")
+mylib = ctypes.CDLL("./libflags.so")
 mylib.welcome_msg("Hi C, I am from Python!")
 ```
 
 this article is from [here](http://karuppuswamy.com/wordpress/2012/01/28/how-to-use-c-library-in-python-generating-python-wrappers-for-c-library/) for my practice of how to use ctypes.
+
+
+
+
 
 # Reference
 
