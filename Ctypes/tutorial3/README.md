@@ -1,4 +1,4 @@
-# Ctypes3
+# Ctypes tutorial 3
 
 This is an example about how to use ctype to wrap the function written in c from python with library.
 
