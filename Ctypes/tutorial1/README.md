@@ -1,5 +1,14 @@
 # Ctypes
 
+## How to use
+
+after cloning this repository, type in like this:
+
+> make all
+
+
+# How can I be available of ctypes to connect external library on python wrapping it. 
+
 I would explain how to use ctypes to call the foreign library in python. 
 
 That is the built-in ctypes module in python, allowing you to use existing libraries in other language byt writing simple wrapper in Python itself.
