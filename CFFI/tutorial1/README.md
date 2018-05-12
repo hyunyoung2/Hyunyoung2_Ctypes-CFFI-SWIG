@@ -4,7 +4,7 @@
 
  Let's see an example code explaining how to use CFFI to interface python with native library.
  
- The code is composed of Point and Line structure. a Line structure has a start point and end point. 
+ The code is composed of a Point structure and functions using it.
  
 ```c
 /* Point.h */
@@ -52,40 +52,36 @@ Point get_point(int x, int y) {
 }
 ```
 
-Let's see the line structure and functions using it. 
+Normally, CFFI has four mode. "ABI"  versus "API" with in-line or out-line mode. 
 
-```c
-/* Line.h */
-typedef struct {
-    Point start; 
-    Point end;
-} Line;
+But I would deal with "API-out-line" mode. Basically "API" is more fast than "ABI"
 
-/* Line.c */ 
-void show_line(Line line){
-    printf("Line in C  is (%d, %d) -> (%d, %d)\n", line.start.x, line.start.y, line.end.x, line.end.y);
-}
+To cap, you would make c source file using python.h so you can use the shared object as module on python. 
 
-void move_line_by_ref(Line *line){
-    show_line(*line);
-    move_point_by_ref(&line -> start);
-    move_point_by_ref(&line -> end);
-    show_line(*line);
-}
+In other words. after writing cython code, and then you generate c source so creat shared object for python. 
 
-Line get_line(void) {
-    Line l = { get_default_point(), get_defaut_point() };
-    return l;
-}
+the shared object behave like interface python with c function. 
+
+CFFI automatically make c source file to wrap c functions to use on python code. 
+
+Let's make the library to c interface. 
+
+Basicall, When you use the CFFI, CFFI is used to generate the wrapped c source to be able to call in python with shared object. 
+
+```python 
+ffi = cffi.FFI()
+
+with open(os.path.join(os.path.dirname(__file__), "point.h)) as f:
+    ffi.cdef(f.read()) # here CFFI is using the cdef from cython.
+ 
+ffi.set_source("_point",
+    '#include "Point.h"', 
+    libraries=["libpoint"], 
+    library_dirs=[os.path.dirname(__file__),],
+)
+
+ffi.compile()
 ```
-
-Befor diving into CFFI, CFFI can be used in one of four mode, but in here I would deal with API level, i.e. it out-of-line mode.
-
-When you use CFFI module, The LD_LIBRARY_PATH is needed because the CFFI module is going to be loading a library we have built in the local directory. 
-
-
- 
- 
 
 
 # Reference 
