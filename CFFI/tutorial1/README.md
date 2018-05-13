@@ -91,3 +91,5 @@ ffi.compile()
  - [Dan Bader's CFFI](https://dbader.org/blog/python-cffi)
  
  - [How to use libffi](https://eli.thegreenplace.net/2013/03/04/flexible-runtime-interface-to-shared-libraries-with-libffi/)
+
+ - [Example git repository about how to use CFFI](https://github.com/wolever/python-cffi-example)
