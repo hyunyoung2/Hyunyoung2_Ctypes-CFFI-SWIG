@@ -13,5 +13,5 @@ test: clib1.so
 	python ./callclib1.py
 
 doc:
-	markdown ctypes.md > ctypes.html
-	firefox ctypes.html
+	markdown README.md > README.html
+	firefox README.html
