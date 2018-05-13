@@ -8,11 +8,11 @@ libpoint.so: Point.o
 
 %.o: %.c
 	gcc -c -Wall -Werror -fpic $^
-
-
+	
+point: export LD_LIBRARY_PATH = $(shell pwd)
 point: libpoint.so
-	./build_point.py
-	./testPoint.py
+	python3 build_point.py
+	python3 testPoint.py
   
 doc:
 	pandoc README.md > README.html
